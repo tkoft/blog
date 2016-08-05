@@ -26,17 +26,11 @@ layout: default
 				<h3>share this post</h3>
 
 				<!-- Target -->
-				<script type="text/javascript">
-					window.onload = function(){
-						document.getElementById("foo").value = window.location.toString();
-					}
-				</script>
-				<input id="foo" value="none" type="url">
+				<input id="foo" value="{{ site.url }}{{site.baseurl}}{{ page.url }}" type="url">
 
 				<!-- Trigger -->
 				<button class="share-btn" data-clipboard-target="#foo">COPY LINK</button></div>
 
-				<p style="text-align: center;">share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" target="_blank">facebook</a> • <a href="https://twitter.com/share?url={{ site.url }}{{ post.url }}&amp;text={{ post.title }}" target="_blank">twitter</a>
 
 					<p style="text-align: center;"><label for="our-popup-{{ forloop.index }}">cancel</label></p>
 				</div>
