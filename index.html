@@ -12,38 +12,20 @@ layout: default
     <a name="blog{{ forloop.index }}"></a>
 
     <header class="post-header">
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><h3 class="post-title" itemprop="name headline"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: '%B %d, %Y'}}</time></h3> </a>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><h3 class="post-title" itemprop="name headline"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: '%B %-d, %Y'}}</time></h3> </a>
 
     </header>
 
-    {{ post.content | split:'<!--break-->' | first }}
-    {% if post.content contains '<!--break-->' %}
-    <a href="{{ site.baseurl }}{{ post.url }}">(read more)</a>
+    {% capture text %}{{ post.content }}{% endcapture %}
+    {% capture truncated_text %}{{ text | truncatewords: 150, '' }}{% endcapture %}
+
+    {% if text != truncated_text %}
+    {{ truncated_text }} <a href="{{ site.baseurl }}{{ post.url }}"><b> read more... </b></a>
+    {% else %}
+    {{ text }}
     {% endif %}
 
-    <p class="post-meta" style="text-align: right; color: rgb(152,152,152);"> &nbsp; <label for="our-popup-{{ forloop.index }}"><i class="fa fa-share"></i> Share / Permalink</label></p>
-
-    <span>
-      <input type="checkbox" id="our-popup-{{ forloop.index }}" class="smoosh" />
-
-      <!-- invisible; when checked, the popup opens -->
-      <label for="our-popup-{{ forloop.index }}" class="overlay"></label>
-
-      <!-- the popup starts here -->
-      <div class="overlay-dialogue">
-       <h3>Share "{{ post.title  }}"</h3>
-
-       <!-- Target -->
-       <input id="foo{{ forloop.index }}" value="{{ site.url }}{{ post.url }}" type="url">
-
-       <!-- Trigger -->
-       <button class="share-btn" data-clipboard-target="#foo{{ forloop.index }}">COPY LINK
-       </button>
-       <p style="text-align: center;">Share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" target="_blank">Facebook</a> • <a href="https://twitter.com/share?url={{ site.url }}{{ post.url }}&amp;text={{ post.title }}" target="_blank">Twitter</a>
-
-         <p style="text-align: center;"><label for="our-popup-{{ forloop.index }}">cancel</label></p>
-       </div>
-     </span>
+    
 
    </div>
 
@@ -60,5 +42,8 @@ layout: default
   {% if paginator.previous_page %}
   <h2><a href="{{ paginator.previous_page_path }}" class="previous">- previous page -</a></h2>
   {% endif %}
+
+
+      <a href="http://www.grchen.com/"><h3 style="text-align: center;">- to home -</h3></a>
 
 </div>

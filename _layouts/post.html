@@ -3,15 +3,46 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-    <div class="main-content" itemprop="articleBody">
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-   <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
+	<div class="main-content" itemprop="articleBody">
+		<header class="post-header">
+			<h1 class="post-title" itemprop="name headline">{{ page.date | date: "%b %-d, %Y" }}</h1>
+		</header>
 
-    {{ content }}
-  </div>
+		{{ content }}
+	</div>
 
-<a href="../"><h3 style="text-align: center;">- to blog -</h3></a>
+	<p class="post-meta" style="text-align: right; color: rgb(152,152,152);"> &nbsp; <label for="our-popup-{{ forloop.index }}"><i class="fa fa-share"></i> Share / Permalink</label></p>
 
-</article>
+	<span>
+		<input type="checkbox" id="our-popup-{{ forloop.index }}" class="smoosh" />
+
+		<!-- invisible; when checked, the popup opens -->
+		<label for="our-popup-{{ forloop.index }}" class="overlay"></label>
+
+		<!-- the popup starts here -->
+		<div class="overlay-dialogue">
+
+			<div style="text-align:center">
+				<h3>share this post</h3>
+
+				<!-- Target -->
+				<script type="text/javascript">
+					window.onload = function(){
+						document.getElementById("foo").value = window.location.toString();
+					}
+				</script>
+				<input id="foo" value="none" type="url">
+
+				<!-- Trigger -->
+				<button class="share-btn" data-clipboard-target="#foo">COPY LINK</button></div>
+
+				<p style="text-align: center;">share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" target="_blank">facebook</a> • <a href="https://twitter.com/share?url={{ site.url }}{{ post.url }}&amp;text={{ post.title }}" target="_blank">twitter</a>
+
+					<p style="text-align: center;"><label for="our-popup-{{ forloop.index }}">cancel</label></p>
+				</div>
+			</span>
+
+			<a href="../blog/"><h2 style="text-align: center;">- to blog -</h2></a>
+			<a href="../blog/"><h3 style="text-align: center;">- to home -</h3></a>
+
+		</article>

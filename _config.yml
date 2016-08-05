@@ -15,7 +15,7 @@ url: http://www.grchen.com # the base hostname & protocol for your site http://w
 # Build settings
 markdown: kramdown
 
-permalink: '/:title/'
+permalink: '/:month-:day-:year-:title.html'
 
 gems: [jekyll-paginate]
 
