@@ -2,13 +2,11 @@
 	<h1 class="project-name"> <a class="header-link" href="{{ site.baseurl }}/"> {{ site.title }}</a></h1>
 	<h3>By Gary "<span id="randNickname"></span>" Chen</h3>
 	<script>
-		window.onload = function(){
 			var names = ["I'm Just Really Bad At Coming Up With Titles", 
 						"Ironically, 'No Titles' is a Title",
 						"I Probably Didn't Take This Photo",
 						"This is the Blog my Facebook Wishes it Was",
 						"How Many Times Have You Refreshed the Page Now?"];
 			document.getElementById("randNickname").innerHTML = names[parseInt(Math.random()*names.length)];
-		}
 	</script>
 </header>
