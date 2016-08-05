@@ -15,14 +15,8 @@ layout: default
 
     </header>
 
-    {% capture text %}{{ post.content }}{% endcapture %}
-    {% capture truncated_text %}{{ text | truncatewords: 150, '' }}{% endcapture %}
-
-    {% if text != truncated_text %}
-    {{ truncated_text }} <a href="{{ site.baseurl }}{{ post.url }}"><b> read more... </b></a>
-    {% else %}
-    {{ text }}
-    {% endif %}
+    {{ post.content | split:'<!--break-->' | first }}
+    {% if post.content contains '<!--break-->' %}<a href="{{ site.baseurl }}{{ post.url }}"><b> read more... </b></a>{% endif %}
 
     
 
