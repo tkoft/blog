@@ -1,5 +1,5 @@
 call jekyll build
-git add .
-git commit -m "New post: %date%"
-git push
+call git add .
+call git commit -m "New post: %date%"
+call git push
 PAUSE
