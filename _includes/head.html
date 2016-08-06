@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/stylesheets/sharing-popup.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
-  <meta name="description" content="{% if site.description %}{{ site.description }}{% else %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
-  <meta property="og:description" content="{% if site.description %}{{ site.description }}{% else %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
+  <meta property="description" content="{% if page.is_post %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:description" content="{% if page.is_post %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:image" content="http://www.grchen.com/blog/img/cover.jpg">
 
   <title>{% if page.is_post %}{{site.title}}: {{ page.date | date: '%B %-d, %Y' }}{% else %}{{ site.title }}{% endif %}</title>
