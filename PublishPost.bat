@@ -1,4 +1,4 @@
-
+call jekyll build
 git add .
 git commit -m "New post: %date%"
 git push
